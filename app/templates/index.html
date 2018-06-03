@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+
+	<!-- <script src="js/dc.js"></script> -->
+	
+	<link href = "css/reset.css" rel = "stylesheet">
+	<link href = "css/bootstrap.min.css" rel = "stylesheet">
+	<link href = "css/dc.css" rel = "stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href = "css/viz.css" rel = "stylesheet">
+
+	
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+	  MathJax.Hub.Config({
+	    extensions: ["tex2jax.js"],
+	    jax: ["input/TeX","output/HTML-CSS"],
+	    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	  });
+	</script>
+	<script src="js/math.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart','line']});  
+    </script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/crossfilter.min.js"></script>
+	<script src="js/dc.js"></script>
+	<script src="js/d3-3d.min.js"></script>
+	<script src = "js/d3ChromaticScale.js"></script>
+	<script src="js/viz.js"></script>
+
+	<title>Gosuddin Siddiqi Final Assignment</title>
+	
+    <body>
+    	<div class="container card">
+    		<div class = "row justify-content-center">
+    			<div class="col-lg-8 card-header text-center">
+    				<b>Yet Another Explanation On Gradient Descent!</b>
+    			</div>
+    		</div>
+    		<div class = "row justify-content-center">
+    		<div class = "col-lg-8 card-body">
+				<p class ="narration text-justify">
+					Data Scientist is one of the most desirable profession in the American job market <sup><a href="https://www.linkedin.com/feed/news/americas-hottest-job-right-now-961809/">[1]</a></sup>. The salaries for the position have not only attracted eyes of people looking for a career past computer science, statisticians, information professionals, it has also opened up the market for formal education degree, massively open online courses and bootcamps. According to a report by Class Central in 2017 <sup><a href="https://www.class-central.com/report/moocs-stats-and-trends-2017/">[2]</a></sup>, overall, the distribution of courses across subjects has remained quite similar to last year, with the exception of Technology courses (Computer Science, Programming, and Data Science). This category grew by two and a half percent. Not surprisingly, these are the categories of courses that have been easiest for MOOC providers to monetize. Also, Python, machine learning are the top 2 most searched keyword on the search functionality on MOOC websites.<sup><a href="https://www.class-central.com/report/moocs-stats-and-trends-2017/">[3]</a></sup> <br>
+				</p>
+					<br>
+				<p>
+					<div class="row justify-content-center">
+						<div class= "indicators-red col-lg-4">
+							<center>+2.5% <span class="fa fa-sort-up"></span><br>
+							increase in MOOCs</center>
+						</div>
+						<div class= "indicators-blue col-lg-4">
+							<center>python, machine learning <br>
+							top 2 searched keywords</center>
+						</div>
+						
+					</div>
+				</p>
+					<br>
+				<p class="narration text-justify">
+					As per my experience, they do a good job at teaching people to at least talk about these skills, job seekers fumble when interviewers ask questions that tests their depth of knowledge in Machine Learning. This explorable explanation attempts to tackle some questions that are often neglected or assumed as prior knowledge. It also attempt to make the viewer think about gradient descent as a convex optimizer which can solve problems other than regression which are convex.<br>
+				</p>
+				<br>
+				<p class="narration text-justify">
+					<b>Let's start with some background about gradient</b>
+				</p>
+				<p class="narration text-justify" id= "init_func">
+					Consider a curve with the equation ${x^2+5x+12}$.<br>
+
+					<p class="narration derivaties" id = "sample-first-derivative">The first derivative is : ${}$</p>
+					<p class="narration derivaties" id = "sample-second-derivative">The second derivative is : ${}$</p>
+					<p class="narration derivaties" id = "sample-critical-points">${}$</p>
+
+					
+				<div id="univariate">
+					<div class="row justify-content-center">
+						<div class= "col-lg-4">
+							<div id="chart1"></div>
+						</div>
+						<div class= "col-lg-4">
+							<div id="chart2"></div>
+						</div>
+						<div class= "col-lg-4">
+							<div id="chart3"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<p class="narration text-justify">
+						Is this function convex?<br>
+						The function is said to be convex when its Second Order Derivative is non-negative.<br>
+				</p> <br>
+					
+				</p>
+				<p class="narration text-justify">
+					From graphs, we can see the first order derivative and the second order derivative. Also, we can imagine an epigraph. It is the part which lies above the green line. This green line is constructed by connectind two points on the curve. <br>
+					Second graph says: The convex function's first order derivative would continue to grow in a non-decreasing manner.<br>
+					Third graph says: The interval between which the area above it does not intersect the curve, is said to be convex in that interval.<br>
+
+				</p>
+				<p class="narration text-justify">
+					It will be interesting to see how functions you specify can be visualized and inspected for these properties. <br>
+					<b>Test your own functions here!Make sure to input univariate function with respect to {x}</b>
+					<br>
+					<label for="custom-function">Function</label>
+    				<input type="text" class="form-control" id="custom-function" aria-describedby="emailHelp" placeholder="x**2+5*x+3">
+    				<button type="button" class="btn btn-primary" id="custom-click">Go!</button>
+    				<small id="custom-function-help" class="form-text text-muted">Too lazy to write a function? Try one from the drawer below and click <b>Go</b>.</small>
+				</p>
+				<div class = "row justify-content-center">
+					<div class= "col-lg-10 card-body ">
+						<button type="button" class="btn btn-primary" id="fun_1">${sin(2*x) + cos(2*x)}$</button>
+						<button type="button" class="btn btn-primary" id="fun_2">${x^3+2*x^2+12}$</button>
+						<button type="button" class="btn btn-primary" id="fun_3">${cos(2*x) + 5*x^2}$</button>
+						
+
+					</div>
+				</div>
+				<br>
+				
+
+				<p class="narration derivaties" id = "custom-first-derivative">The first derivative is : ${}$</p>
+				<p class="narration derivaties" id = "custom-second-derivative">The second derivative is : ${}$</p>
+				<p class="narration derivaties" id = "custom-critical-points">${}$</p>
+				</p>
+				<br>
+				<div id="custom-graphs">
+					<div class="row justify-content-center">
+						<div class= "col-lg-4">
+							<div id="custom-chart1"></div>
+						</div>
+						<div class= "col-lg-4">
+							<div id="custom-chart2"></div>
+						</div>
+						<div class= "col-lg-4">
+							<div id="custom-chart3"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<p class="narration text-justify">
+					By finding the critical points, we can find extreme values, but in real world problems we are concerned with finding the global extremes. In order to find these we use either gradient descent or ascent.
+				</p>
+				<br>
+				<p class="narration text-justify">
+					Job seekers are also contricted at looking gradient descent as a solver for problems like linear regression, which tends to the first algorithm or data problem in Machine Learning or Data Science courses. <br>
+					Here, I try to explain another interesting real world problem from physics which uses gradient ascent.<br><br>
+					<b>Examples other than regression: Finding the projection angle so that we cover the maximum horizontal distance - Projectile Motion.</b>
+				</p>
+				<p class="narration text-justify">
+					The range of a projectile, $R$, is the total horizontal distance traveled by the projectile and is given by the product of $u_{x} × t_{flight}$. Here, $u_{x}$ is the horizontal component of the initial velocity and is equal to $u cosθ$. Substituting the formulas for $u_{x}$ and $t_{flight}$, we get the expression. <br>
+						<center>$R = ucosθ × \frac{2usinθ}{g} = \frac {2u^{2}sin2θ}{g}$</center>
+					<br>
+					We will solve this using gradient ascent and find the angle that maximizes the horizontal distance.<br>
+
+					Assume $g = 9.8  {m}/{s^{2}}$ and $u_{x} = 25 {m}/{s}$ <br>
+					First order derivative: $2{u}^{2}cos(2θ)/{g}$ <br>
+				</p>
+
+				<div class= "row">
+				<div class= "col-lg-6" id="static_projectile_angle">
+					
+				</div>
+
+				<div class= "col-lg-6" id="gd_projectile_angle">
+					
+				</div>
+				</div>
+				<br>
+				<div class = "row justify-content-center">
+					<button type="button" class="btn btn-primary" id="grad_asc">Start the ascent !</button>
+				</div>
+				<br>
+				<p class="narration derivaties" id = "projectile_answer">The horizontal range can be maximized upto ${}$ meters with an projectile angle of ${}$ degrees.</p><br>
+
+				<p class="narration text-justify">
+					As we are familiar with content available widely over internet, this example tries to explain gradient ascent with the similar concept. Our task can be solved by learning or growing the gradient in upwards direction. <br>
+					To give you another example, food for thought, I suggest trying to solve problems like minimum lenght of runway give attributes of aircraft, or budget minimization problem, or any linear programming example can serve as a great exercise to solve using the concept of gradient.<br>
+				</p>
+				<p class="narration text-justify">
+					<b>If it is about finding minima, why not use Second Order Derivative?</b><br>
+				</p>
+				<p class="narration text-justify">
+					Computing and storing second order derivative in form of Hessian Matrix, consumes $O(n^{2})$ space. This is infeasible when it comes to high dimensions and loss functions of problems involving Neural Networks, Conditional Random Fields, and other statistical models with large number of parameters.<br>
+
+				</p>
+				<p class="narration text-justify">
+					<b>End Notes:</b><br>
+				There exist a special field of study concerning with the convex optimzation problem. A lot problems in Machine Learning concentrates on modifying the function to a convex optimization problem and solving it. This is because of the nature of the convex functions. While it is not possible to modify every function into a convex problem, experts have identified methods such as proximal gradient descent and others. <br>
+					This was a brief explanation about providing an insight into what a convex optimization actually looks like and comparing and constrasting with other functions that we widely know. I would suggest the readers to keep learning beyond the MOOCs and try to get into the roots of the problem.<br>
+				</p>
+			</div>
+
+			</div>
+		</div>
+    </body>
+  
+</head>
