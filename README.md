@@ -28,7 +28,7 @@ In order to provide more clarity around the concepts of convex functions and to 
 
 ### Related Work:
 
-As mentioned earlier, many Machine Learning enthusiasts have tried to explain gradient descent algorithm. Misa Ogura, Full Stack Software Engineer and Cancer Cell Biologist, presents one such explanation in the Hackernoon blog. This article jumps directly to linear regression and flows from then on. The course by Andrew Ng on Coursera, assumes that the user know about convex function and dives straight into solving it with first order method. It fails to explain why first order only as well. Two examples from the visualization domains explains graphically in context of linear regression.
+As mentioned earlier, many Machine Learning enthusiasts have tried to explain gradient descent algorithm. Misa Ogura, Full Stack Software Engineer and Cancer Cell Biologist, presents one such explanation in the ![Hackernoon blog](https://hackernoon.com/machine-learning-bit-by-bit-multivariate-gradient-descent-e198fdd0df85). This article jumps directly to linear regression and flows from then on. The course by Andrew Ng on ![Coursera]( https://www.coursera.org/learn/machine-learning), assumes that the user know about convex function and dives straight into solving it with first order method. It fails to explain why first order only as well. Two ![examples](https://bl.ocks.org/bricedev/1bd45a5f6d727499ee46) from the visualization domains explains graphically in context of linear regression.
 
 ### Storyboard:
 
